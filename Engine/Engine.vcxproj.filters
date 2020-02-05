@@ -48,9 +48,6 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\repos\JumpyCube\Engine\RectF.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Cannon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
