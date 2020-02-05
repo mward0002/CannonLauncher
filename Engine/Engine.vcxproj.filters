@@ -51,7 +51,13 @@
     <ClInclude Include="..\..\..\source\repos\JumpyCube\Engine\RectF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\repos\JumpyCube\Engine\Vec2.h">
+    <ClInclude Include="Cannon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RectF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,10 +83,10 @@
     <ClCompile Include="Mouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\repos\JumpyCube\Engine\RectF.cpp">
+    <ClCompile Include="Vec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\repos\JumpyCube\Engine\Vec2.cpp">
+    <ClCompile Include="RectF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
