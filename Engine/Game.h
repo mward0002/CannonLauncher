@@ -23,7 +23,8 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-
+#include "Cannon.h"
+#include "Vec2.h"
 class Game
 {
 public:
@@ -41,6 +42,10 @@ private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
-	/*  User Variables              */
+	/*  User Variables 
+	*/
+	Vec2 cannonPos{ 0.0f, 0.0f };
+	Cannon cannon;
+	
 	/********************************/
 };
