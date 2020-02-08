@@ -13,3 +13,15 @@ void Cannon::Draw(Graphics& gfx)
 	gfx.DrawRect(pos.x, pos.x + wheelWidth, pos.y + cannonHeight, pos.y + cannonHeight + wheelHeight, wheelColor);
 	gfx.DrawRect(pos.x + wheelWidth + wheelGap, pos.x + 2 * wheelWidth + wheelGap , pos.y + cannonHeight, pos.y + cannonHeight + wheelHeight, wheelColor);
 }
+
+void Cannon::Update(const Keyboard& kbd, float dt)
+{
+	if (kbd.KeyIsPressed('A')) {
+		pos -= {0.2f, 0} * dt;
+	
+	}
+	else if (kbd.KeyIsPressed('D')) {
+
+		pos += {0.2f, 0} * dt;
+	}
+}

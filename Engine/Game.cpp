@@ -32,13 +32,19 @@ Game::Game( MainWindow& wnd )
 void Game::Go()
 {
 	gfx.BeginFrame();	
-	UpdateModel();
+	const float frameT = ft.FrameTime() / float(nSubframes);
+	for (int f = 0; f < nSubframes; f++)
+	{
+		UpdateModel(frameT);
+	}
 	ComposeFrame();
 	gfx.EndFrame();
 }
 
-void Game::UpdateModel()
+void Game::UpdateModel(float ft)
 {
+	const float dt = ft;
+	cannon.Update(wnd.kbd, dt);
 }
 
 void Game::ComposeFrame()

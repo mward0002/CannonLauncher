@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Cannon.h"
 #include "Vec2.h"
+#include "FrameTimer.h"
 class Game
 {
 public:
@@ -34,7 +35,7 @@ public:
 	void Go();
 private:
 	void ComposeFrame();
-	void UpdateModel();
+	void UpdateModel(float ft);
 	/********************************/
 	/*  User Functions              */
 	/********************************/
@@ -44,8 +45,10 @@ private:
 	/********************************/
 	/*  User Variables 
 	*/
-	Vec2 cannonPos{ 0.0f, 0.0f };
+	static constexpr int nSubframes = 10;
+	Vec2 cannonPos{0.0f, Graphics::ScreenHeight - 31.0f, };
 	Cannon cannon;
+	FrameTimer ft;
 	
 	/********************************/
 };

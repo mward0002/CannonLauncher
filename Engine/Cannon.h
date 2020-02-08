@@ -3,10 +3,12 @@
 #include "Vec2.h"
 #include "RectF.h"
 #include "Colors.h"
+#include "Keyboard.h"
 class Cannon {
 public:
 	Cannon(Vec2 pos_in);
 	void Draw(Graphics& gfx);
+	void Update(const Keyboard& kbd, float dt);
 private:
 	Color cannonColor = Colors::LightGray;
 	Color wheelColor = Colors::Gray;
