@@ -2,6 +2,7 @@
 class Vec2
 {
 public:
+	Vec2() = default;
 	Vec2(float xIn, float yIn);
 	Vec2 operator+ (const Vec2& rhs) const;
 	Vec2& operator+= (const Vec2& rhs);

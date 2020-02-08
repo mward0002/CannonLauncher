@@ -42,3 +42,8 @@ void Cannon::ClipToScreen()
 		pos -= {0.7f, 0};
 	}
 }
+
+Vec2 Cannon::GetPos() const
+{
+	return pos;
+}

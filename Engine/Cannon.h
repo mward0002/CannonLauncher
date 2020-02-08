@@ -10,7 +10,8 @@ public:
 	void Draw(Graphics& gfx);
 	void Update(const Keyboard& kbd, float dt);
 	RectF GetRect() const;
-	void ClipToScreen();
+	void ClipToScreen(); 
+	Vec2 GetPos() const;
 private:
 	Color cannonColor = Colors::LightGray;
 	Color wheelColor = Colors::Gray;

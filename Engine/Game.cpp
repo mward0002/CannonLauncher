@@ -46,9 +46,24 @@ void Game::UpdateModel(float ft)
 	const float dt = ft;
 	cannon.Update(wnd.kbd, dt);
 	cannon.ClipToScreen();
+	while (!wnd.mouse.IsEmpty())
+	{
+		const Mouse::Event e = wnd.mouse.Read();
+		if (e.GetType() == Mouse::Event::Type::LPress)
+		{
+			// respond to left mouse click event
+			Vec2 mouseDir = { (float) e.GetPosX(), (float)e.GetPosY() };
+			Vec2 pos = cannon.GetPos() + Vec2{60.0f, 5.0f};
+			projectiles[0].SetPos(pos);
+			Vec2 velDir = mouseDir - projectiles[0].GetPos();
+			projectiles[0].SetVel(velDir.Normalize() * 0.2f);
+		}
+	}
+	projectiles[0].Update();
 }
 
 void Game::ComposeFrame()
 {
 	cannon.Draw(gfx);
+	projectiles[0].Draw(gfx);
 }

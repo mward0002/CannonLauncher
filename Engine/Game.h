@@ -26,6 +26,7 @@
 #include "Cannon.h"
 #include "Vec2.h"
 #include "FrameTimer.h"
+#include "Projectile.h"
 class Game
 {
 public:
@@ -46,9 +47,11 @@ private:
 	/*  User Variables 
 	*/
 	static constexpr int nSubframes = 10;
-	Vec2 cannonPos{0.0f, Graphics::ScreenHeight - 31.0f, };
+	static constexpr int nProjMax = 20;
+	Vec2 cannonPos{0.0f, Graphics::ScreenHeight - 31.0f - 300.0f, };
 	Cannon cannon;
 	FrameTimer ft;
+	Projectile projectiles[nProjMax];
 	
 	/********************************/
 };
