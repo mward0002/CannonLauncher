@@ -25,3 +25,20 @@ void Cannon::Update(const Keyboard& kbd, float dt)
 		pos += {0.2f, 0} * dt;
 	}
 }
+
+RectF Cannon::GetRect() const
+{
+	return RectF(pos.x, pos.x + cannonWidth, pos.y, pos.y + cannonHeight);
+}
+
+void Cannon::ClipToScreen()
+{
+	if (GetRect().left <= 0) {
+	
+		pos += {0.7f, 0};
+	}
+	if (GetRect().right >= Graphics::ScreenWidth) {
+	
+		pos -= {0.7f, 0};
+	}
+}

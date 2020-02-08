@@ -45,6 +45,7 @@ void Game::UpdateModel(float ft)
 {
 	const float dt = ft;
 	cannon.Update(wnd.kbd, dt);
+	cannon.ClipToScreen();
 }
 
 void Game::ComposeFrame()

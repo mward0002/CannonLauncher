@@ -9,6 +9,8 @@ public:
 	Cannon(Vec2 pos_in);
 	void Draw(Graphics& gfx);
 	void Update(const Keyboard& kbd, float dt);
+	RectF GetRect() const;
+	void ClipToScreen();
 private:
 	Color cannonColor = Colors::LightGray;
 	Color wheelColor = Colors::Gray;
