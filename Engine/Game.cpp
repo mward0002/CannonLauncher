@@ -54,16 +54,30 @@ void Game::UpdateModel(float ft)
 			// respond to left mouse click event
 			Vec2 mouseDir = { (float) e.GetPosX(), (float)e.GetPosY() };
 			Vec2 pos = cannon.GetPos() + Vec2{60.0f, 5.0f};
-			projectiles[0].SetPos(pos);
-			Vec2 velDir = mouseDir - projectiles[0].GetPos();
-			projectiles[0].SetVel(velDir.Normalize() * 0.2f);
+			projectiles[nNumberProjectiles].SetPos(pos);
+			Vec2 velDir = mouseDir - projectiles[nNumberProjectiles].GetPos();
+			projectiles[nNumberProjectiles].SetVel(velDir.Normalize() * launchFactor);
+			nNumberProjectiles++;
 		}
 	}
-	projectiles[0].Update();
+	for (int i = 0; i < nNumberProjectiles + 1; i++) {
+		if (projectiles[i].isSpawned()) 
+		{
+			projectiles[i].increaseCounter(dt);
+			projectiles[i].Update(dt);
+			projectiles[i].ClampToScreen();
+
+		}
+		
+	
+	}
+	
 }
 
 void Game::ComposeFrame()
 {
 	cannon.Draw(gfx);
-	projectiles[0].Draw(gfx);
+	for (int i = 0; i < nNumberProjectiles + 1; i++) {
+		projectiles[i].Draw(gfx);
+	}
 }

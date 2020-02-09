@@ -13,8 +13,8 @@ public:
 	void ClipToScreen(); 
 	Vec2 GetPos() const;
 private:
-	Color cannonColor = Colors::LightGray;
-	Color wheelColor = Colors::Gray;
+	const Color cannonColor = Colors::LightGray;
+	const Color wheelColor = Colors::Gray;
 	static constexpr float cannonWidth = 60.0f;
 	static constexpr float cannonHeight = 20.0f;
 	static constexpr float wheelWidth = 10.0f;

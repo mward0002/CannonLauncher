@@ -16,13 +16,14 @@ void Cannon::Draw(Graphics& gfx)
 
 void Cannon::Update(const Keyboard& kbd, float dt)
 {
+	Vec2 dir = { 400.0f, 0 };
 	if (kbd.KeyIsPressed('A')) {
-		pos -= {0.2f, 0} * dt;
+		pos -= dir * dt;
 	
 	}
 	else if (kbd.KeyIsPressed('D')) {
 
-		pos += {0.2f, 0} * dt;
+		pos += dir * dt;
 	}
 }
 
