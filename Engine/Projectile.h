@@ -20,9 +20,9 @@ private:
 	Vec2 pos;
 	Vec2 vel;
 	float counter = 0.0f;
-	float counterMax = 3.0f;
+	float counterMax = 6.0f;
 	bool spawned = false;
-	float g = -500.0f;
+	float g = -800.0f;
 	float height = 10.0f;
 	float width = 10.0f;
 	Color color = Colors::Red;

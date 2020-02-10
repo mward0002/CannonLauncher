@@ -27,6 +27,7 @@
 #include "Vec2.h"
 #include "FrameTimer.h"
 #include "Projectile.h"
+#include "LaunchStrengthIndicator.h"
 class Game
 {
 public:
@@ -48,12 +49,16 @@ private:
 	*/
 	static constexpr int nSubframes = 10;
 	static constexpr int nProjMax = 500;
-	static constexpr float launchFactor = 900.0f;
+	float launchFactor = 500.0f;
+	static constexpr float minLaunchFactor = 500.0f;
 	int nNumberProjectiles = 0;
 	Vec2 cannonPos{0.0f, Graphics::ScreenHeight - 31.0f, };
 	Cannon cannon;
 	FrameTimer ft;
 	Projectile projectiles[nProjMax];
+	Vec2 lIndicatorPos{ 10.0f, 10.0f };
+	LaunchStrengthIndicator lIndicator;
+	
 	
 	/********************************/
 };

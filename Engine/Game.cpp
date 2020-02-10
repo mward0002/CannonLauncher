@@ -25,6 +25,7 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
+	lIndicator( lIndicatorPos),
 	cannon(cannonPos)
 {
 }
@@ -46,10 +47,15 @@ void Game::UpdateModel(float ft)
 	const float dt = ft;
 	cannon.Update(wnd.kbd, dt);
 	cannon.ClipToScreen();
+	if (wnd.mouse.LeftIsPressed())
+	{
+		launchFactor += 300.0f * dt;
+		
+	}
 	while (!wnd.mouse.IsEmpty())
 	{
 		const Mouse::Event e = wnd.mouse.Read();
-		if (e.GetType() == Mouse::Event::Type::LPress)
+		if (e.GetType() == Mouse::Event::Type::LRelease)
 		{
 			// respond to left mouse click event
 			Vec2 mouseDir = { (float) e.GetPosX(), (float)e.GetPosY() };
@@ -58,6 +64,7 @@ void Game::UpdateModel(float ft)
 			Vec2 velDir = mouseDir - projectiles[nNumberProjectiles].GetPos();
 			projectiles[nNumberProjectiles].SetVel(velDir.Normalize() * launchFactor);
 			nNumberProjectiles++;
+			launchFactor = minLaunchFactor;
 		}
 	}
 	for (int i = 0; i < nNumberProjectiles + 1; i++) {
@@ -76,6 +83,7 @@ void Game::UpdateModel(float ft)
 
 void Game::ComposeFrame()
 {
+	lIndicator.Draw(gfx, launchFactor - minLaunchFactor);
 	cannon.Draw(gfx);
 	for (int i = 0; i < nNumberProjectiles + 1; i++) {
 		projectiles[i].Draw(gfx);

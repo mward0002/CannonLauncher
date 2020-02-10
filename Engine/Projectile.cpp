@@ -79,7 +79,7 @@ void Projectile::ClampToScreen()
 		
 		ReboundY();
 		if (vel.y < -0.14) {
-			vel.y += 0.07f;
+			vel.y *= 0.9f;
 		}
 	}
 	else if (GetRect().top < 0) {
@@ -91,7 +91,7 @@ void Projectile::ClampToScreen()
 		pos.x -= 1;
 		ReboundX();
 		if (vel.x < -0.14) {
-			vel.x += 0.07f;
+			vel.x *= 0.9f;
 		}
 	
 	}
@@ -99,7 +99,7 @@ void Projectile::ClampToScreen()
 		pos.x += 1;
 		ReboundX();
 		if (vel.x > 0.14) {
-			vel.x -= 0.07f;
+			vel.x *= 0.9f;
 		}
 	}
 
