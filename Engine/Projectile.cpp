@@ -75,7 +75,7 @@ void Projectile::increaseCounter(float dt)
 void Projectile::ClampToScreen()
 {
 	if (GetRect().bottom >= Graphics::ScreenHeight) {
-		pos.y -= 1;
+		pos.y -= 3;
 		
 		ReboundY();
 		if (vel.y < -0.14) {
@@ -83,12 +83,12 @@ void Projectile::ClampToScreen()
 		}
 	}
 	else if (GetRect().top < 0) {
-		pos.y += 1;
+		pos.y += 3;
 		ReboundY();
 	
 	}
 	else if (GetRect().right >= Graphics::ScreenWidth) {
-		pos.x -= 1;
+		pos.x -= 3;
 		ReboundX();
 		if (vel.x < -0.14) {
 			vel.x *= 0.9f;
@@ -96,7 +96,7 @@ void Projectile::ClampToScreen()
 	
 	}
 	else if (GetRect().left < 0) {
-		pos.x += 1;
+		pos.x += 3;
 		ReboundX();
 		if (vel.x > 0.14) {
 			vel.x *= 0.9f;
