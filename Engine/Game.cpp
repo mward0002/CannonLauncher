@@ -26,7 +26,8 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	lIndicator( lIndicatorPos),
-	cannon(cannonPos)
+	cannon(cannonPos),
+	hoop(hoopPos)
 {
 }
 
@@ -67,25 +68,35 @@ void Game::UpdateModel(float ft)
 			launchFactor = minLaunchFactor;
 		}
 	}
+	int tempScore = 0;
 	for (int i = 0; i < nNumberProjectiles + 1; i++) {
 		if (projectiles[i].isSpawned()) 
 		{
 			projectiles[i].increaseCounter(dt);
 			projectiles[i].Update(dt);
 			projectiles[i].ClampToScreen();
-
+			projectiles[i].DoBBCollision(hoop);
+			projectiles[i].Score(hoop);
 		}
+		if (projectiles[i].haveScored()) {
 		
+			tempScore++;
+		}
 	
 	}
+	
+	score = tempScore;
+
 	
 }
 
 void Game::ComposeFrame()
 {
+	gfx.DrawRect(200, 200 + score * 10, 15, 30, color);
 	lIndicator.Draw(gfx, launchFactor - minLaunchFactor);
 	cannon.Draw(gfx);
 	for (int i = 0; i < nNumberProjectiles + 1; i++) {
 		projectiles[i].Draw(gfx);
 	}
+	hoop.Draw(gfx);
 }

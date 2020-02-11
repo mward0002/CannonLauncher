@@ -28,6 +28,7 @@
 #include "FrameTimer.h"
 #include "Projectile.h"
 #include "LaunchStrengthIndicator.h"
+#include "Hoop.h"
 class Game
 {
 public:
@@ -52,13 +53,16 @@ private:
 	float launchFactor = 500.0f;
 	static constexpr float minLaunchFactor = 500.0f;
 	int nNumberProjectiles = 0;
+	int score = 0;
 	Vec2 cannonPos{0.0f, Graphics::ScreenHeight - 31.0f, };
 	Cannon cannon;
 	FrameTimer ft;
+	Color color = Colors::Red;
 	Projectile projectiles[nProjMax];
 	Vec2 lIndicatorPos{ 10.0f, 10.0f };
 	LaunchStrengthIndicator lIndicator;
-	
+	Vec2 hoopPos{ 300.0f, 400.0f };
+	Hoop hoop;
 	
 	/********************************/
 };

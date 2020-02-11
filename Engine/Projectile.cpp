@@ -1,5 +1,5 @@
 #include "Projectile.h"
-
+#include <cmath>
 
 
 void Projectile::Init(const Vec2& pos_in, const Vec2& vel_in)
@@ -46,6 +46,11 @@ Vec2 Projectile::GetPos() const
 bool Projectile::isSpawned() const
 {
 	return spawned;
+}
+
+bool Projectile::haveScored() const
+{
+	return hasScored;
 }
 
 
@@ -105,6 +110,29 @@ void Projectile::ClampToScreen()
 
 }
 
+void Projectile::Score(Hoop& hoop)
+{
+	RectF bbRect = hoop.GetBBRect();
+	RectF collidableHoop = hoop.GetCollidableHoopRect();
+	int leftBoundry = bbRect.left + 3;
+	int rightBoundry = collidableHoop.right - 3;
+	int topBoundry = collidableHoop.top;
+	int bottomBoundry = collidableHoop.bottom;
+	Vec2 center = GetRect().GetCenter();
+	if (vel.y < 0 && center.x > rightBoundry && center.x < leftBoundry && center.y < bottomBoundry && center.y > topBoundry) {
+	
+		canScore = false;
+	
+	}
+	if (vel.y > 0 && center.x > rightBoundry && center.x < leftBoundry && center.y < bottomBoundry && center.y > topBoundry && canScore) {
+	
+		hasScored = true;
+	}
+
+}
+
+
+
 void Projectile::ReboundY()
 {
 	vel.y *= -1;
@@ -113,4 +141,36 @@ void Projectile::ReboundY()
 void Projectile::ReboundX()
 {
 	vel.x *= -1;
+}
+
+void Projectile::DoBBCollision(Hoop& hoop)
+{
+	RectF bbRect = hoop.GetBBRect();
+	RectF collidableHoop = hoop.GetCollidableHoopRect();
+	if (GetRect().IsOverlaping(bbRect)) {
+		
+		 if (pos.x >= bbRect.left && pos.x <= bbRect.right)
+		{
+			ReboundY();
+		}
+		else
+		{
+			ReboundX();
+		}
+	
+	}
+
+	if (GetRect().IsOverlaping(collidableHoop)) {
+		
+		if (pos.x >= collidableHoop.left && pos.x <= collidableHoop.right)
+		{
+			ReboundY();
+		}
+		else
+		{
+			ReboundX();
+		}
+
+	}
+
 }

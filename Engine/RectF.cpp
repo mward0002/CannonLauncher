@@ -49,3 +49,8 @@ bool RectF::IsOverlaping(const RectF rect) const
 {
 	return left < rect.right && right > rect.left && top < rect.bottom && bottom > rect.top;
 }
+
+Vec2 RectF::GetCenter() const
+{
+	return Vec2((left + right) / 2.0f, (top + bottom) / 2.0f);
+}
