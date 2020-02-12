@@ -147,9 +147,13 @@ void Projectile::DoBBCollision(Hoop& hoop)
 {
 	RectF bbRect = hoop.GetBBRect();
 	RectF collidableRim = hoop.GetCollidableHoopRect();
+	Vec2 center = GetRect().GetCenter();
 	if (GetRect().IsOverlaping(bbRect)) {
-		
-		 if (pos.x >= bbRect.left && pos.x <= bbRect.right)
+		if (std::signbit(vel.x) == std::signbit((center - bbRect.GetCenter()).x))
+		{
+			ReboundY();
+		}
+		else  if (center.x >= bbRect.left && center.x <= bbRect.right)
 		{
 			ReboundY();
 		}
@@ -161,11 +165,15 @@ void Projectile::DoBBCollision(Hoop& hoop)
 	}
 
 	if (GetRect().IsOverlaping(collidableRim)) {
-		
-		if (pos.x >= collidableRim.left && pos.x <= collidableRim.right)
+		if (std::signbit(vel.x) == std::signbit((center - collidableRim.GetCenter()).x))
 		{
 			ReboundY();
 		}
+		else if (center.x >= collidableRim.left && center.x <= collidableRim.right)
+		{
+			ReboundY();
+		}
+		
 		else
 		{
 			ReboundX();

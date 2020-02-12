@@ -61,7 +61,7 @@ private:
 	Projectile projectiles[nProjMax];
 	Vec2 lIndicatorPos{ 10.0f, 10.0f };
 	LaunchStrengthIndicator lIndicator;
-	Vec2 hoopPos{ 300.0f, 400.0f };
+	Vec2 hoopPos{ 500.0f, 200.0f };
 	Hoop hoop;
 	
 	/********************************/
