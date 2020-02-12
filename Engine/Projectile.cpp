@@ -146,7 +146,7 @@ void Projectile::ReboundX()
 void Projectile::DoBBCollision(Hoop& hoop)
 {
 	RectF bbRect = hoop.GetBBRect();
-	RectF collidableHoop = hoop.GetCollidableHoopRect();
+	RectF collidableRim = hoop.GetCollidableHoopRect();
 	if (GetRect().IsOverlaping(bbRect)) {
 		
 		 if (pos.x >= bbRect.left && pos.x <= bbRect.right)
@@ -160,9 +160,9 @@ void Projectile::DoBBCollision(Hoop& hoop)
 	
 	}
 
-	if (GetRect().IsOverlaping(collidableHoop)) {
+	if (GetRect().IsOverlaping(collidableRim)) {
 		
-		if (pos.x >= collidableHoop.left && pos.x <= collidableHoop.right)
+		if (pos.x >= collidableRim.left && pos.x <= collidableRim.right)
 		{
 			ReboundY();
 		}
