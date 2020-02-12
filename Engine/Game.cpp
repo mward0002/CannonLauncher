@@ -50,7 +50,7 @@ void Game::UpdateModel(float ft)
 	cannon.ClipToScreen();
 	if (wnd.mouse.LeftIsPressed())
 	{
-		launchFactor += 300.0f * dt;
+		launchFactor += launchPowerUpFactor * dt;
 		
 	}
 	while (!wnd.mouse.IsEmpty())
@@ -86,7 +86,9 @@ void Game::UpdateModel(float ft)
 	}
 	
 	score = tempScore;
-
+	hoop.increaseCounter(dt);
+	hoop.Update(dt);
+	hoop.ClampToScreen();
 	
 }
 

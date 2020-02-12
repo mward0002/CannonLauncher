@@ -51,6 +51,7 @@ private:
 	static constexpr int nSubframes = 10;
 	static constexpr int nProjMax = 500;
 	float launchFactor = 500.0f;
+	float launchPowerUpFactor = 600.0f;
 	static constexpr float minLaunchFactor = 500.0f;
 	int nNumberProjectiles = 0;
 	int score = 0;
