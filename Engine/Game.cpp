@@ -112,5 +112,8 @@ void Game::ComposeFrame()
 	else {
 	
 		gfx.DrawRect(0, Graphics::ScreenWidth, 0, Graphics::ScreenHeight, Colors::Blue);
+		gfx.DrawRect(50, 100, 10, 300, Colors::White);
+		gfx.DrawRect(Graphics::ScreenWidth - 100, Graphics::ScreenWidth - 50, 10, 300, Colors::White);
+		gfx.DrawRect(50, Graphics::ScreenWidth - 50, 350, 400, Colors::White);
 	}
 }
