@@ -36,11 +36,11 @@ void Cannon::ClipToScreen()
 {
 	if (GetRect().left <= 0) {
 	
-		pos += {0.7f, 0};
+		pos += {1.0f, 0};
 	}
 	if (GetRect().right >= Graphics::ScreenWidth) {
 	
-		pos -= {0.7f, 0};
+		pos -= {1.0f, 0};
 	}
 }
 

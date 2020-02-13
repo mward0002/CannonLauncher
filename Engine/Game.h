@@ -29,6 +29,7 @@
 #include "Projectile.h"
 #include "LaunchStrengthIndicator.h"
 #include "Hoop.h"
+#include "ScoreTimer.h"
 class Game
 {
 public:
@@ -64,6 +65,8 @@ private:
 	LaunchStrengthIndicator lIndicator;
 	Vec2 hoopPos{ 500.0f, 200.0f };
 	Hoop hoop;
+	ScoreTimer scoreTimer;
+	int checkForBucket = 0;
 	
 	/********************************/
 };

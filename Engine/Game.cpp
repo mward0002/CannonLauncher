@@ -81,6 +81,7 @@ void Game::UpdateModel(float ft)
 		if (projectiles[i].haveScored()) {
 		
 			tempScore++;
+			
 		}
 	
 	}
@@ -89,7 +90,11 @@ void Game::UpdateModel(float ft)
 	hoop.increaseCounter(dt);
 	hoop.Update(dt);
 	hoop.ClampToScreen();
-	
+	scoreTimer.decreaseTimer(dt);
+	if (score > checkForBucket) {
+		scoreTimer.resetScoreTimer();
+			checkForBucket++;
+	}
 }
 
 void Game::ComposeFrame()
@@ -101,4 +106,11 @@ void Game::ComposeFrame()
 		projectiles[i].Draw(gfx);
 	}
 	hoop.Draw(gfx);
+	if (scoreTimer.stillAlive()) {
+		scoreTimer.Draw(gfx);
+	}
+	else {
+	
+		gfx.DrawRect(0, Graphics::ScreenWidth, 0, Graphics::ScreenHeight, Colors::Blue);
+	}
 }
